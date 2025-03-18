@@ -1,8 +1,10 @@
 package com.documentmanagement.controller.mappers;
 
-import com.documentmanagement.model.entity.Markup;
+import com.documentmanagement.controller.dto.CreateMarkupRequestDTO;
+import com.documentmanagement.controller.dto.MarkupApi;
+import com.documentmanagement.domain.entity.Markup;
 
-public class MarkupMapper implements DocumentAppMapper<MarkupApi, Markup> {
+public class MarkupMapper implements DocumentAppMapper<MarkupApi, CreateMarkupRequestDTO, Markup> {
 
     @Override
     public MarkupApi toAPI(Markup entity) {
@@ -14,7 +16,7 @@ public class MarkupMapper implements DocumentAppMapper<MarkupApi, Markup> {
     }
 
     @Override
-    public Markup toEntity(MarkupApi apiRequest) {
+    public Markup toEntity(CreateMarkupRequestDTO apiRequest) {
         return Markup.builder()
                 .position(apiRequest.getPosition())
                 .text(apiRequest.getText())

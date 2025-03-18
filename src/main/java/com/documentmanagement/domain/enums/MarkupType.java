@@ -1,4 +1,4 @@
-package com.documentmanagement.model.enums;
+package com.documentmanagement.domain.enums;
 
 public enum MarkupType {
     PRESENTATIONAL,

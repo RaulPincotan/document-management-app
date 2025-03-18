@@ -1,6 +1,6 @@
-package com.documentmanagement.model.entity;
+package com.documentmanagement.domain.entity;
 
-import com.documentmanagement.model.enums.MarkupType;
+import com.documentmanagement.domain.enums.MarkupType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -44,5 +44,4 @@ public class Markup {
     @ManyToOne
     @JoinColumn(name = "document_id")
     private Document document;
-
 }

@@ -1,4 +1,4 @@
-package com.documentmanagement.model.entity;
+package com.documentmanagement.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,8 +1,8 @@
 package com.documentmanagement.mockup;
 
-import com.documentmanagement.model.entity.Document;
-import com.documentmanagement.model.entity.Markup;
-import com.documentmanagement.model.enums.MarkupType;
+import com.documentmanagement.domain.entity.Document;
+import com.documentmanagement.domain.entity.Markup;
+import com.documentmanagement.domain.enums.MarkupType;
 import com.documentmanagement.service.DocumentRepository;
 import com.documentmanagement.service.MarkupRepository;
 import lombok.RequiredArgsConstructor;

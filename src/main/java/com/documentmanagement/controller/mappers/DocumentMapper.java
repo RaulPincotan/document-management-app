@@ -1,8 +1,10 @@
 package com.documentmanagement.controller.mappers;
 
-import com.documentmanagement.model.entity.Document;
+import com.documentmanagement.controller.dto.CreateDocumentRequestDTO;
+import com.documentmanagement.controller.dto.DocumentApi;
+import com.documentmanagement.domain.entity.Document;
 
-public class DocumentMapper implements DocumentAppMapper<DocumentApi, Document> {
+public class DocumentMapper implements DocumentAppMapper<DocumentApi, CreateDocumentRequestDTO, Document> {
 
     @Override
     public DocumentApi toAPI(Document entity) {
@@ -11,6 +13,7 @@ public class DocumentMapper implements DocumentAppMapper<DocumentApi, Document> 
         }
 
         return DocumentApi.builder()
+                .id(entity.getId())
                 .name(entity.getName())
                 .classification(entity.getClassification())
                 .totalPages(entity.getTotalPages())
@@ -19,7 +22,7 @@ public class DocumentMapper implements DocumentAppMapper<DocumentApi, Document> 
     }
 
     @Override
-    public Document toEntity(DocumentApi documentApi) {
+    public Document toEntity(CreateDocumentRequestDTO documentApi) {
         return Document.builder()
                 .name(documentApi.getName())
                 .classification(documentApi.getClassification())

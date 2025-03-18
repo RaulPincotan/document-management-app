@@ -1,4 +1,4 @@
-package com.documentmanagement.controller.mappers;
+package com.documentmanagement.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DocumentApi {
-
-    private Long id;
+public class UpdateDocumentRequestDTO {
     private String name;
     private String classification;
-    private Integer totalPages;
     private String author;
 }
