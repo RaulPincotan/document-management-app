@@ -75,6 +75,13 @@ public class DocumentController {
         return getMarkupMapper().toAPI(markupService.addMarkup(documentId, markupCreateRequest));
     }
 
+    @DeleteMapping("{documentId}/markups")
+    public void deleteMarkup(@PathVariable Long documentId) {
+        log.info("Delete markup for document with id [{}] request called", documentId);
+
+        markupService.deleteMarkupForDocument(documentId);
+    }
+
     private MarkupMapper getMarkupMapper() {
         return new MarkupMapper();
     }

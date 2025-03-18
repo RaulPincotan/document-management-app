@@ -5,6 +5,7 @@ import com.documentmanagement.controller.mappers.MarkupMapper;
 import com.documentmanagement.domain.entity.Document;
 import com.documentmanagement.domain.entity.Markup;
 import com.documentmanagement.exceptions.ResourceNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,10 @@ public class MarkupService {
         markup.setDocument(document);
 
         return markupRepository.save(markup);
+    }
+
+    @Transactional
+    public void deleteMarkupForDocument(Long documentId) {
+        markupRepository.deleteByDocumentId(documentId);
     }
 }

@@ -3,6 +3,7 @@ package com.documentmanagement.service;
 import com.documentmanagement.controller.dto.UpdateDocumentRequestDTO;
 import com.documentmanagement.exceptions.ResourceNotFoundException;
 import com.documentmanagement.domain.entity.Document;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,6 @@ import java.util.Optional;
 public class DocumentService {
     private final DocumentRepository documentRepository;
 
-    public Document addDocument(Document document) {
-        return documentRepository.save(document);
-    }
-
-    public void deleteDocument(Long documentId) {
-        documentRepository.deleteById(documentId);
-    }
-
     public List<Document> getDocuments(String authorPrefix) {
         if (Objects.isNull(authorPrefix)) {
             return documentRepository.findAll();
@@ -31,6 +24,11 @@ public class DocumentService {
         return documentRepository.findByAuthorStartingWith(authorPrefix);
     }
 
+    public Document addDocument(Document document) {
+        return documentRepository.save(document);
+    }
+
+    @Transactional
     public Document updateDocument(Long documentId, UpdateDocumentRequestDTO updateRequest) {
         Document document = documentRepository.findById(documentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find document with id " + documentId));
@@ -38,6 +36,11 @@ public class DocumentService {
         updateDocument(updateRequest, document);
 
         return documentRepository.save(document);
+    }
+
+    @Transactional
+    public void deleteDocument(Long documentId) {
+        documentRepository.deleteById(documentId);
     }
 
     public Optional<Document> getDocument(Long documentId) {
